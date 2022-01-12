@@ -9,6 +9,7 @@ const  routerBase = process.env.DEPLOY_ENV === 'GH_PAGES' ? {
 export default {
   // Global page headers: https://go.nuxtjs.dev/config-head
   ...routerBase,
+
   head: {
     titleTemplate: '%s - p5project',
     title: 'p5project',
@@ -22,13 +23,20 @@ export default {
       { name: 'format-detection', content: 'telephone=no' },
     ],
     link: [{ rel: 'icon', type: 'image/x-icon', href: '/favicon.ico' }],
+    script: [
+      {
+        src: 'https://unpkg.com/vue-p5'
+      }
+    ],
   },
 
   // Global CSS: https://go.nuxtjs.dev/config-css
   css: [],
 
   // Plugins to run before rendering page: https://go.nuxtjs.dev/config-plugins
-  plugins: [],
+  plugins: [
+    { src: '@/plugin/p5.js', mode: 'client' }
+  ],
 
   // Auto import components: https://go.nuxtjs.dev/config-components
   components: true,

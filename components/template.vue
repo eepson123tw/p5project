@@ -9,5 +9,5 @@ import { Vue, Component } from 'nuxt-property-decorator'
 @Component({
   components: {},
 })
-export default class template extends Vue {}
+export default class Template extends Vue {}
 </script>
