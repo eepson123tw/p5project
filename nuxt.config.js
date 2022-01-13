@@ -1,10 +1,13 @@
 import colors from 'vuetify/es5/util/colors'
 
-const  routerBase = process.env.DEPLOY_ENV === 'GH_PAGES' ? {
-  router: {
-    base: '/p5project/'
-  }
-} : {}
+const routerBase =
+  process.env.DEPLOY_ENV === 'GH_PAGES'
+    ? {
+        router: {
+          base: '/p5project/',
+        },
+      }
+    : {}
 
 export default {
   // Global page headers: https://go.nuxtjs.dev/config-head
@@ -25,8 +28,8 @@ export default {
     link: [{ rel: 'icon', type: 'image/x-icon', href: '/favicon.ico' }],
     script: [
       {
-        src: 'https://unpkg.com/vue-p5'
-      }
+        src: 'https://unpkg.com/vue-p5',
+      },
     ],
   },
 
@@ -34,9 +37,7 @@ export default {
   css: [],
 
   // Plugins to run before rendering page: https://go.nuxtjs.dev/config-plugins
-  plugins: [
-    { src: '@/plugin/p5.js', mode: 'client' }
-  ],
+  plugins: [{ src: '@/plugin/p5.js', mode: 'client' }],
 
   // Auto import components: https://go.nuxtjs.dev/config-components
   components: true,

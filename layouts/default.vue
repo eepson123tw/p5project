@@ -34,9 +34,10 @@
         v-model="theme"
         inset
         hide-details="auto"
-        :label="!theme ? '日間' : '夜晚'"
         @click="$vuetify.theme.dark = !$vuetify.theme.dark"
       ></v-switch>
+      <v-icon v-if="theme" color="orange darken-2">mdi-weather-sunny</v-icon>
+      <v-icon v-else color="blue darken-2">mdi-weather-night</v-icon>
     </v-app-bar>
     <v-main>
       <v-container>
@@ -71,12 +72,12 @@ export default class DefaultLayout extends Vue {
   items = [
     {
       icon: 'mdi-apps',
-      title: 'Welcome',
+      title: '首頁',
       to: '/',
     },
     {
       icon: 'mdi-chart-bubble',
-      title: 'Inspire',
+      title: '待續...',
       to: '/inspire',
     },
   ]
