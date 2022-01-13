@@ -29,9 +29,14 @@
 
       <v-toolbar-title v-text="title" />
       <v-spacer />
-      <v-btn icon @click.stop="rightDrawer = !rightDrawer">
-        <v-icon>mdi-menu</v-icon>
-      </v-btn>
+
+      <v-switch
+        v-model="theme"
+        inset
+        hide-details="auto"
+        :label="!theme ? '日間' : '夜晚'"
+        @click="$vuetify.theme.dark = !$vuetify.theme.dark"
+      ></v-switch>
     </v-app-bar>
     <v-main>
       <v-container>
@@ -75,6 +80,8 @@ export default class DefaultLayout extends Vue {
       to: '/inspire',
     },
   ]
+
+  theme = true
 
   miniVariant = false
   right = true
