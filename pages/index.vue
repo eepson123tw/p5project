@@ -26,6 +26,7 @@ export default class Index extends Vue {
   setup(sketch: p5) {
     sketch.resizeCanvas(800, 600)
     sketch.background(100)
+    sketch.noLoop()
   }
 
   draw(sketch: p5) {
