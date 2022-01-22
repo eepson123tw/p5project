@@ -34,9 +34,7 @@
     </v-app-bar>
 
     <v-main>
-      <v-container>
-        <Nuxt />
-      </v-container>
+      <Nuxt />
     </v-main>
 
     <v-footer :absolute="!fixed" app>
@@ -71,6 +69,6 @@ export default class DefaultLayout extends Vue {
 
   miniVariant = true
 
-  title = 'p5視覺化'
+  title = '作品列表'
 }
 </script>

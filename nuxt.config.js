@@ -10,9 +10,11 @@ const routerBase =
     : {}
 
 export default {
+  ssr:false,
   // Global page headers: https://go.nuxtjs.dev/config-head
   ...routerBase,
 
+  target: 'static',
   head: {
     titleTemplate: '%s - p5視覺化',
     title: 'p5project',
@@ -89,4 +91,6 @@ export default {
 
   // Build Configuration: https://go.nuxtjs.dev/config-build
   build: {},
+
+
 }

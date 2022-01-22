@@ -1,48 +1,55 @@
 <template>
-  <div>
-    <v-row justify="center" align="center">
-      <v-col cols="12" sm="8" md="6">
-        <client-only>
-          <myp5component @setup="setup" @draw="draw" />
-        </client-only>
-      </v-col>
+  <v-container>
+    <v-row dense>
+      <client-only>
+        <v-col v-for="(card, index) in cards" :key="card.title" :cols="4">
+          <v-card>
+            <v-img
+              :src="card.src"
+              class="white--text align-end"
+              gradient="to bottom, rgba(0,0,0,.1), rgba(0,0,0,.5)"
+              height="200px"
+            >
+              <v-card-title v-text="card.title"></v-card-title>
+            </v-img>
+
+            <v-card-actions>
+              <v-spacer></v-spacer>
+              <v-btn icon>
+                <v-icon color="red" @click="onLike(index + 1)"
+                  >mdi-heart</v-icon
+                >
+              </v-btn>
+            </v-card-actions>
+          </v-card>
+        </v-col>
+      </client-only>
     </v-row>
-  </div>
+  </v-container>
 </template>
 
 <script lang="ts">
 import { Vue, Component } from 'nuxt-property-decorator'
-import * as p5 from 'p5'
-@Component({
-  components: {
-    myp5component: () => {
-      if (process.client) {
-        return import('@/components/VueP5Component.vue')
-      }
-    },
-  },
-})
+
+@Component({ components: {} })
 export default class Index extends Vue {
-  setup(sketch: p5) {
-    sketch.resizeCanvas(800, 600)
-    sketch.background(100)
-    sketch.noLoop()
-  }
+  cards = [
+    {
+      title: '寧靜海',
+      src: require('@/assets/img/lunajpeg.jpeg'),
+    },
+    {
+      title: 'Favorite road trips',
+      src: 'https://cdn.vuetifyjs.com/images/cards/road.jpg',
+    },
+    {
+      title: 'Best airlines',
+      src: 'https://cdn.vuetifyjs.com/images/cards/plane.jpg',
+    },
+  ]
 
-  draw(sketch: p5) {
-    // ellipse(mouseX, mouseY, 20, 20);
-    sketch.translate(sketch.width / 2, sketch.height / 2)
-    sketch.rotate(sketch.frameCount)
-    sketch.translate(sketch.frameCount, 0)
-
-    if (sketch.frameCount % 5 < 3) {
-      sketch.fill(255 - sketch.random(100), 45, 45)
-    } else {
-      sketch.fill(255 - sketch.random(200), 247, 33)
-    }
-
-    sketch.noStroke()
-    sketch.ellipse(0, 0, 50, 50)
+  onLike(id: number) {
+    this.$router.push(`/draw/${id}`)
   }
 }
 </script>
