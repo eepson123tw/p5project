@@ -1,6 +1,12 @@
 <template>
   <v-app light>
-    <v-navigation-drawer permanent absolute :temporary="show" expand-on-hover>
+    <v-navigation-drawer
+      permanent
+      absolute
+      :temporary="show"
+      expand-on-hover
+      style="z-index: 10"
+    >
       <v-list nav dense>
         <v-list-item
           v-for="(item, i) in items"
@@ -18,9 +24,8 @@
         </v-list-item>
       </v-list>
     </v-navigation-drawer>
-    <v-app-bar elevation="0" app style="z-index: 0">
+    <v-app-bar elevation="0" app>
       <v-spacer />
-
       <v-toolbar-title v-text="title" />
       <v-spacer />
       <v-switch
@@ -37,8 +42,12 @@
       <Nuxt />
     </v-main>
 
-    <v-footer :absolute="!fixed" app>
-      <span>&copy; {{ new Date().getFullYear() }}</span>
+    <v-footer :absolute="!fixed" app style="z-index: 11">
+      <span
+        >&copy;
+        {{ new Date().getFullYear() }}
+        資料、圖片、文章來源皆來自網路，僅用來做為學習用途，不做任何商業用途，若有任何疑問，請聯繫eepson123@gmail.com。</span
+      >
     </v-footer>
   </v-app>
 </template>

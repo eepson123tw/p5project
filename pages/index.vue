@@ -3,7 +3,7 @@
     <v-row dense>
       <client-only>
         <v-col v-for="(card, index) in cards" :key="card.title" :cols="4">
-          <v-card>
+          <v-card @click="onLike(index + 1)">
             <v-img
               :src="card.src"
               class="white--text align-end"
@@ -16,9 +16,7 @@
             <v-card-actions>
               <v-spacer></v-spacer>
               <v-btn icon>
-                <v-icon color="red" @click="onLike(index + 1)"
-                  >mdi-heart</v-icon
-                >
+                <v-icon color="red">mdi-heart</v-icon>
               </v-btn>
             </v-card-actions>
           </v-card>
